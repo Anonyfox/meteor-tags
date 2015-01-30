@@ -72,7 +72,7 @@ A simple function that cleans up an array of words.
       tags = _.uniq _.compact _.filter list, (t) ->
         (t.length > 1) and
         (t.length < 30) and
-        ($.trim(t.replace(/\d+/gi,"")).length > 1)
+        ((t.replace(/\d+/gi,"")).trim().length > 1)
       tags = _.map tags, (t) -> t.toLowerCase()
       tags = _.without(tags, stopwords...)
       if excludes?.length

@@ -9,7 +9,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.0');
   // api.addFiles('anonyfox:tags.js');
-  api.use(['tinytest','coffeescript','underscore'],['client','server']);
+  api.use(['coffeescript','underscore'],['client','server']);
   api.addFiles([
 	  'stopwords/stopwords_de.coffee',
 	  'stopwords/stopwords_en.coffee',
@@ -20,7 +20,13 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function(api) {
-  // api.use(['tinytest','coffeescript'],['client','server']);
-  // api.addFiles(['tags.coffee'],['client','server']);
-  // api.addFiles('anonyfox:tags-tests.js');
+  api.use(['tinytest','coffeescript','underscore'],['client','server']);
+  api.addFiles([
+	  'stopwords/stopwords_de.coffee',
+	  'stopwords/stopwords_en.coffee',
+	  'porter-stemmer.js',
+	  'tags.coffee.md',
+	  'globals.js'
+  ],['client','server']);
+  api.addFiles('tests.coffee');
 });
