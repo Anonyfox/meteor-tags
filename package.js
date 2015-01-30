@@ -1,8 +1,8 @@
 Package.describe({
   name: 'anonyfox:tags',
-  version: '0.0.1',
+  version: '0.0.3',
   summary: 'Extract relevant tags from any text string. Works in the client and on the server.',
-  git: '',
+  git: 'https://github.com/Anonyfox/meteor-tags.git',
   documentation: 'README.md'
 });
 
