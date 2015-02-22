@@ -1,5 +1,7 @@
 # Tagger
-This module has only one thing to do: get a text string, and return some important keywords, aka "tags".
+This module has only one thing to do: get a text string, and return
+some important keywords, aka "tags". This is the globally available
+object:
 
     @Tags =
       findFrom: (str, excludes) ->
@@ -7,7 +9,8 @@ This module has only one thing to do: get a text string, and return some importa
       clean: (tags, excludes) -> cleanData tags, excludes
       split: (str) -> cleanStringData str
 
-The StopWords are provided externally as list objects. We initialize them once for further usage on application startup in the client.
+The StopWords are provided externally as list objects. We initialize them
+once for further usage on application startup in the client.
 
     stopwords = _.union _.values(StopWords)...
 
@@ -23,7 +26,9 @@ Transform any string in a clean array of words.
         ary = _.reject ary, (t) -> _.some (r.test t for r in rx)
       _.without(ary, stopwords...)
 
-Analyze an array of words for occurance statistics. For better results, porter-stemmer is applied on every word internally. Returns a dictionary object of the form: `{'stem': {words: ['w1','w2'], hits: ['w1','w2']}}`.
+Analyze an array of words for occurance statistics. For better results,
+porter-stemmer is applied on every word internally. Returns a dictionary
+object of the form: `{'stem': {words: ['w1','w2'], hits: ['w1','w2']}}`.
 
     analyze = (ary) ->
       dictionary = {}
@@ -37,7 +42,8 @@ Analyze an array of words for occurance statistics. For better results, porter-s
           dictionary[stem] = {words: [word], hits: 1}
       return dictionary
 
-Choose the best results out of a dictionary object and returns an array of words (aka: tags).
+Choose the best results out of a dictionary object and returns an array of
+words (aka: tags).
 
     pickResults = (dictionary) ->
       totalWords = _.flatten _.map _.values(dictionary), (v) -> v.words
