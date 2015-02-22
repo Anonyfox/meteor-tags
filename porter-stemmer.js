@@ -11,6 +11,8 @@
 //
 // CommonJS tweak by jedp
 
+porter = null;
+
 (function() {
   var step2list = {
       "ational" : "ate",
@@ -56,7 +58,7 @@
   var mgr1 = "^(" + C + ")?" + V + C + V + C;       // [C]VCVC... is m>1
   var s_v = "^(" + C + ")?" + v;                   // vowel in stem
 
-  function stemmer(w) {
+  stemmer = function(w) {
     var stem;
     var suffix;
     var firstch;
@@ -193,17 +195,20 @@
       memo[w] = stemmer(w);
     }
     return memo[w];
-  }
+  };
 
-  if (typeof exports != 'undefined' && exports != null) {
+  if (typeof exports != 'undefined' && exports !== null) {
     exports.stemmer = stemmer;
     exports.memoizingStemmer = memoizingStemmer;
-  } else if (typeof window != 'undefined' && window != null) {
-	window.stemmer = stemmer;
-	window.memoizingStemmer = memoizingStemmer;
+  } else if (typeof window != 'undefined' && window !== null) {
+  	window.stemmer = stemmer;
+  	window.memoizingStemmer = memoizingStemmer;
   } else {
   	this.stemmer = stemmer;
   	this.memoizingStemmer = memoizingStemmer;
   }
 
+  porter = stemmer;
 })();
+
+stemmer = porter;

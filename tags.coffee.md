@@ -85,3 +85,4 @@ A simple function that cleans up an array of words.
         rx = _.map excludes, (e) -> new RegExp(e, "i")
         tags = _.reject tags, (t) -> _.some (r.test t for r in rx)
       return tags
+
