@@ -2,6 +2,8 @@
 
 A fast approach to extract relevant tags from any text string. Works on the client and on the server.
 
+***This library will no longer be developed! Use the fork: [nefiltari:yaki](https://github.com/nefiltari/yaki) instead***
+
 ## installation
 
 `meteor add anonyfox:tags`
